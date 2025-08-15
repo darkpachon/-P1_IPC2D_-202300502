@@ -41,3 +41,13 @@ class libros(ABC):
     @abstractmethod
     def mostrar_info(self):
         pass
+class Lf(libros):
+    def __init__(self, titulo, autor, numero_ejemplar):
+        super().__init__(titulo, autor)
+        self.__numero_ejemplar = numero_ejemplar
+        self.__dias_prestamo = 7
+    def mostrar_info(self):
+        estado = "Prestado" if self.esta_prestado() else "Disponible"
+        print(f"[Libro Físico] Título: {self.get_titulo()}, Autor: {self.get_autor()}, "
+              f"Código: {self.get_codigo()}, Ejemplar: {self.__numero_ejemplar}, "
+              f"Días máx: {self.__dias_prestamo}, Estado: {estado}")
